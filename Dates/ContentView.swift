@@ -9,8 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    Text("Hello, world!")
-      .padding()
+    var components = DateComponents()
+    components.hour = 7
+    components.minute = 30
+    let dateFromComponents = Calendar.current.date(from: components) ?? Date()
+        
+    return Form {
+      Section(header: Text("Date from Components")) {
+        Text("Hour: \(components.hour ?? 0)")
+        Text("Minute: \(components.minute ?? 0)")
+        Text("Date: \(dateFromComponents)")
+
+      }
+    }
   }
 }
 
